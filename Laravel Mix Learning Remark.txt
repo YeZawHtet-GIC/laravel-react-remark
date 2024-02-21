@@ -1,0 +1,371 @@
+Laravel Remark 
+22.12.23
+ 
+ 
+Remarkable Syntax
+--------
+For Php expression => @
+For Php Result => {{ something }}
+For Php Result with html tags => {!! something !!}
+ 
+******************************************************************************
+Route Related
+--------------------
+Static Route
+----
+Route::get('URI', Callback Function);
+e.g::   Route::get('/home', function () {
+return view ('index');
+});
+=======================================================
+Dynamic Route
+----
+Route::get('/home/{category}', function ($category){
+return 'This is Home's '. $category;
+});
+=======================================================
+URI parameter passing with default value
+----
+Route::get('/user/{id?}/{name?}', function ($id=null, $name=null){ return "This User ID is $id and UserName is $name"; });
+=======================================================
+Route View
+----
+Route::view('URI', 'View', 'Parameter');
+e.g::  Route:view('/home', 'index', ["message" => "This is testing message"]);
+=======================================================
+Naming Route (Reason: use for long URI)
+----
+Route::get('URI', callback function) -> name('something');
+e.g:
+Route::get('/home', function (){ return view('home'); }) ->name ('h');
+ 
+Route::view('URI', 'view', 'parameter') -> name('something');
+e.g:
+Route::view('/home', 'home', ["message"=>"this is message"]) -> name ('something');
+******************************************************************************
+Getting URI as URL (Reason: mainly use for navigation)
+-----
+without route name ::     {{url('/home'}}
+ 
+with route name ::       {{route('something')}}
+ 
+******************************************************************************
+We need to store file related with css, js and image must be stored in Public Folder.
+After we stored, we need to use asset() method for connecting with these file.
+e.g:  <link rel="stylesheet" href="{{ asset('css/style.css') }}" >
+<script src="{{ asset('js/script.js') }}> </script>
+<img src="{{ asset('image/sample.jpg') }}"> 
+******************************************************************************
+Directives
+----
+@php
+some php codes
+@endphp
+===================
+@if
+some code
+@elseif
+some code
+@endif
+=====================
+@for($i=0, $i <= 10; $i++)
+<h1> This is {{ $i }} </h1>
+@endfor
+=====================
+@foreach (arrayName as SingleItem)
+{{ SingleItem }}
+@endforeach
+******************************************************************************
+using @yield method and @section &&  @
+=================
+@yield method is use to replace different content and @section is used to fill @yield method
+ 
+e.g
+@yield('body')
+@yield('jscodes')
+ 
+@section('jscodes')
+some js codes
+@stop
+
+@section('body')
+some html or js code here
+@endsection or @stop
+ 
+========
+we can use @stack method and @push method 
+==================
+e.g
+@stack('myjavascriptcode')
+ 
+@push('myjavascriptcode')
+some js code here.....
+@endpush
+******************************************************************************
+Fetch API in Laravel
+============
+need to add JSON Formatter extention and php namespace resolver extention
+ 
+Route::get('getData', function(){                                                        Route::get('getData', function(){
+$data=file_get_contents("https://fakestoreapi.com/products");				$data=Http::get("https://fakestoreapi.com/products");
+//changing data to json data								$data=$data->json();   OR    $data= $data->object();
+return $jsonData;									dd($data); });
+//to see changes with format
+dd($jsonData);
+// to filter the array which price is under 50
+$filterData=array_filter($jsonData, fn($j) => $j->price < 50);
+});
+******************************************************************************
+Using Collections in Laravel
+======
+Route::get('getData', function(){
+$data=Http::get("https://fakestoreapi.com/products")->object();
+$data=collect($data)->last();
+dd($data);
+});
+******************************************************************************
+Using Controller in Laravel
+=====
+php artisan make:controller ArticleController --resource
+In web.php,
+Route::resource('Article', ArticleController::class);
+ 
+
+******************************************************************************
+******************************************************************************
+
+At GIC (3.1.24)
+======
+for running laravel on localhost    => php artisan serve 
+for creating migration files => php artisan migrate  
+for creating table => php artisan make:migration create_examples_table    //table name must be plural
+for creating model => php artisan make:model ModelName   //CapitalCamel case
+for creating controller => php artisan make:controller ExampleController   //good inserting Controller in the next
+for rollback migrate command => php artisan migrate:rollback    //can change table structure that are already migrate
+for seeding database => php artisan db:seed
+for building database factory   => php artisan make:factory ItemFactory
+for rollback wrong table and data   => php artisan migrate:refresh
+for creating all require files with model    => php artisan make:model Test --all
+for redirect route to back =>  redirect()->route('view_file_path');  OR back();
+for delete data from database => make one form for delete button and make it to @method('delete') and @csrf and make it's action to path give..
+for 
+
+
+
+Laravel WebPack Setup
+=====
+composer require laravel/ui
+php artisan ui bootstrap
+npm i
+npm run dev
+
+Day (8.1.2024)
+======
+belongsTo  =>   e.g Bobo->belongsTo('classroom');  // will retrieve bobo's classroom_id = classroom's classroom_id
+hasMany  => e.g ClassRoomA->hasMany('student');  // will retrieve classroomA id = student table's classroom_id 
+
+******************************************************************************
+Day (9.1.2024)
+=====
+Error Validations in form
+====
+useful tips
+==
+=>using validate function in controller is not good enough than making validate in request
+=>using value="{{old('name')}}" for saving old value
+=>using value="{{old('name', $model->name)}} for saving old value in update
+
+in controller store method,
+$request->validate([
+'name'->'required'
+'price'->'required'
+]);
+
+in create form,
+<input type="text" name="name" class="@error is-valid @enderror" value="{{old('name')}}>
+@error('name')
+<div class="text-danger">$message</div>
+@enderror
+
+<?php header('Content-Type: text/plain');
+                header('Content-Disposition: attachment; filename="Report.txt"');
+                ?> 
+
+12.1.2024
+=======
+Explain Attributes in app.blade.php (meta tags, defer, viewport, asset)
+Explain about @extends & @yield & @section & @auth vs @guest)
+Explain lang\en folder for validations changing languages
+Explain .env file (debug mode = false and others (UAT server vs Production))
+Explin about laravel.log file
+Explain and code  CRUD Again for more understand and well-structure
+
+Yesterday with resource => https://github.com/YeZawHtet-GIC/Single-Page-Todo-List.git
+ 
+Yesterday with custom  => https://github.com/YeZawHtet-GIC/Custom-ToDo.git
+
+Today with Custom  => https://github.com/YeZawHtet-GIC/CandyStore.git
+
+
+15.1.24
+====
+Explain about authentication and authorization (passport sanztum)
+Explain about laravel ui (libraries)
+Knowledge about Laravel News website
+Explain about middleware in controller and each route
+adminlte.io (free admin dashboard download and test)
+download free admin dashboard template and customize in laravel
+
+
+16/1.24
+====
+explain about uuid 
+
+22.1.24
+=======
+shopping page layout with bootstrap
+file upload in laravel
+StoreAs(public/image)
+
+mycolor.space
+color hunt
+
+31.1.24
+------------
+Develop crud process for api
+Develop Api
+Explain about laravel api
+Install PostMan and register
+Explain and Pratice CRUD with laravel api
+
+
+2.2.24
+----------
+SQLBOLT.COM AND SQLzoo.net
+we can use OFFSET 5 to retrieve data from database start from 5. this will start retrieve from id 5;
+
+5.2.24
+=====
+Saving Image in Laravel
+-----------------------
+$image=$request->image;
+$imageName='Sample_'.uniqid().'.'.$image->extension();
+$image->storeAs("public/gallery", $imageName);
+$item->image=$imageName;
+
+Extracting Image as URL
+-------------------------
+in model
+--------
+public function getImageAttribe($value){
+return asset("storage/gallery/".$value);
+}
+
+----------------------------------------------
+Laravel Road Map =>  https://github.com/LaravelDaily/Laravel-Roadmap-Learning-Path
+QuickAdmin Panel
+Query Selector Tutorial Link => 
+
+Laravel Regular Expresssion Constraints
+========================================
+Route::get('/user/{name}', function (string $name) {
+    // ...
+})->where('name', '[A-Za-z]+');
+ 
+Route::get('/user/{id}', function (string $id) {
+    // ...
+})->where('id', '[0-9]+');
+ 
+Route::get('/user/{id}/{name}', function (string $id, string $name) {
+    // ...
+})->where(['id' => '[0-9]+', 'name' => '[a-z]+']);
+
+=================================================================
+Laravel Tips
+============
+@forelse (Data as singleData)
+Loop Data
+@empty
+Not fount Data
+@endforelse
+
+2. 
+@guest
+@auth
+
+3.
+auth()->user()->name    // we can retrieve login user informations
+
+4.
+Formatting Carbon Dates
+- $date->format('m/d/Y')
+- $date->toDateString()
+
+5.
+Route::view('uri',view)
+
+6.
+Blade Error Pages
+php artisan vendor:publish --tag=laravel-errors
+
+7.
+Artisan view:clear           //for removing compiled views
+
+8.
+Page Title
+
+{{$page title ?? "Default Title"}}
+
+=====================================================
+@isset
+$data is show when is not null
+@endisset
+
+@empty
+$data is empty
+@endempty
+
+@auth
+$data
+
+=============================================================
+React Remarks 
+
+React Router
+*************
+first install react-router           => npm i react-router-dom 
+
+Types of Router
+**************
+BrowserRouter => /something
+HashRouter => /#/something 
+MemoryRouter => does not change the url value
+StaticRouter => <StaticRouter location="/">  </StaticRouter>	
+
+===========================================================================================================
+16.2.24
+**********
+React Router project 
+********************
+Known Usage:
+How to use useLoaderData
+How to use useRef
+How to use useRouteError
+How to use and insert Heroicons in project
+How to add Toastify alert in project
+How to use NavLink
+How to use useNavigate
+How to use redirect (only one usage is applied in project)
+How to use useFetcher (
+How to use fetcher.Form (only known that it is use for multiple submission and reset form state)  
+How to use Form 
+How to use Local Storage (setItem, removeItem)
+How to use path, element, nested Children, loader, action and errorElement, index in createBrowserRouter
+
+Need to Learn Usage: 
+How to use useFetcher (need to learn more usage)
+How to use redirect (need to learn more usage)
+Need to learn useEffect 
+How to use path, element, nested Children, loader, action and errorElement, index in createBrowserRouter 
+Choosing to use NavLink or Link 
+Need to more understand about Form vs fetcher.Form
