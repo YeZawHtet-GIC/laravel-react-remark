@@ -1,0 +1,266 @@
+JS Begins
+=========
+var, let, const
+var x = 5; // x is called identifiers;
+var x // x is undefined value;
+if we declared with let keyword, we can't redeclare, but var keyword can
+Variables declared with let have Block Scope
+Variables declared with let must be Declared before use
+Variables declared with let cannot be Redeclared in the same scope
+let x="5"+5+5;  the result is string cause by auto changing datatype
+constants in array and object
+=====
+we can change constant of the array elements, but can't reassign the array like this:
+const array1=['value1', 'value2', 'value3'];
+const object1={'value1', 'value2', 'value3'};
+array1[0]="value5";
+but we can't => array1=['value4', 'value2', 'value3'];
+object1.value1="value5";
+but we can't => object1={'value5', 'value2', 'value3'};
+
+Operators in JS
+=====
+There are different types of JavaScript operators:
+
+Arithmetic Operators = +, -, *, /, ++, --, ** 
+Assignment Operators = =, ==, +=, -=, *=, %=, /=, **=
+Comparison Operators = <=,  >=, ==, ===, !=, !==,
+String Operators = "4" + "5";
+Logical Operators = &&, ||, !
+Bitwise Operators = &=, ^=, |= // e.g: let x = 10;
+					x &&= 5; if the value x is exist then, the x will assign
+				e.g: let x= 10;
+					x||=5; if the value x is false then, the second value will assign
+Nullish Coalescing Assignment => ?? e.g let x;
+					x ??=5; if the value x is declared then, the second value will assign
+Ternary Operators = ?				
+Type Operators
+
+Operator Precedence in JS
+=====
+low to high => (), +, -, *, /
+
+JavaScript has 8 Datatypes
+=====
+1. String e.g=> let x= "this is string";
+2. Number e.g=> let x=5, x=6.6;
+3. Bigint  e.g=> let x = BigInt("123456789012345678901234567890");
+4. Boolean e.g=> true, false;
+5. Undefined e.g=> let x;
+6. Null   e.g=> let x=null;
+7. Symbol e.g=>
+8. Object  e.g=> const x= {a:"a", b: "b"};
+
+we can use typeOf method to check the type of the data types    e.g=> typeOf(x);
+
+Functions in JS
+=====
+function myFunction(p1, p2) {
+  return p1 * p2; // using return keyword, when reach the return then, stop the executing
+}
+
+
+Objects in JS
+=====
+const person = {
+  firstName: "John",
+  lastName : "Doe",
+  id     :  5566
+};
+
+Accessing the object's data
+=====
+person.firstName
+person["firstName"]
+
+Array in JS
+=====
+const person = ["John","Doe",5566];
+
+Accessing the array's data  // arrays are special type of objects
+=====
+person[0]
+
+Using this keyword
+=====
+const person = {
+  firstName: "John",
+  lastName : "Doe",
+  id       : 5566,
+  fullName : function() {
+    return this.firstName + " " + this.lastName;
+  }
+};
+ this keyword is refers to the person object;
+
+In an object method, this refers to the object.
+Alone, this refers to the global object.
+In a function, this refers to the global object.
+In a function, in strict mode, this is undefined.
+In an event, this refers to the element that received the event.
+Methods like call(), apply(), and bind() can refer this to any object.
+
+<button onclick="this.innerHTML=Date()">The time is?</button> // this is example of this	
+
+we can use \ escape character for string 
+
+array methods
+=============
+->length
+->toString 
+->pop        =>remove last element
+->push		=>add new element in last
+->shift		=>remove first element in an array
+->unshift	=>add new element in first
+->splice   =>add element and returns new array
+-slice =>remove elements and returns new array
+
+Number()	=>changing to number format
+join("/")	=>joining the array elements with some specific value
+concat() e.g: Array1.concat(Array2);	=>joining the two or more arrays
+splice() e.g: fruits.splice(2, 0, "Lemon", "Kiwi");   //The first parameter (0) defines the position where new elements should be added (spliced in).
+							The second parameter (1) defines how many elements should be removed.
+
+String Methods
+=====
+toUpperCase() and toLowerCase()
+=====
+e.g
+let text1 = "Hello World!";       // String
+let text2 = text1.toLowerCase();  // text2 is text1 converted to lower
+
+Concat()
+=====
+let text1 = "Hello";
+let text2 = "World";
+let text3 = text1.concat(" ", text2);
+
+JS remove whitespace from the string by using trim().
+ 
+
+slice and substring Different  // slice allow and count negative value from the last but substring count all negative as 0.
+=====
+
+let text = "Apple, Banana, Kiwi";
+let part = text.slice(7,13); // will slice from the start position 7 and from the next start position 13
+
+Result will be like this,
+Banana
+
+#2 Eg.
+let text = "Apple, Banana, Kiwi";
+let part = text.slice(-12,-6); // negative value will count from the last of the string.
+
+Result will be like this,
+Banana
+
+String Search Methods
+=======
+indexOf()    => e.g indexOf("locate")   => return the first position of founded in a string, if not found then return -1
+lastIndexOf()  => e.g indexOf("locate")   => return the last position of founded in a string, if not found then return -1
+search()   => The two methods are NOT equal => The search() method cannot take a second start position argument.
+The indexOf() method cannot take powerful search values (regular expressions).
+match()
+matchAll()
+includes()
+startsWith()
+endsWith()
+
+Events in JS
+=====
+onchange	=>	An HTML element has been changed
+onclick		=>	The user clicks an HTML element
+onmouseover	=>	The user moves the mouse over an HTML element
+onmouseout	=>	The user moves the mouse away from an HTML element
+onkeydown	=>	The user pushes a keyboard key
+onload		=>	The browser has finished loading the page
+
+**************************************************************************************
+React Day 1
+=====
+React Road Map
+=====
+State and Props:
+Understand the concepts of state and props in React. Learn how to manage component state and pass data between components using props.
+
+Event Handling:
+Learn how to handle user interactions and events in React components. This involves using event handlers and understanding the synthetic event system in React.
+
+Conditional Rendering:
+Explore techniques for conditionally rendering components based on certain conditions or states. This includes using conditional statements in JSX.
+
+Forms in React:
+Learn how to work with forms in React, including controlled components, handling form submissions, and validating user input.
+
+React Router:
+Understand client-side routing in React using the React Router library. This allows you to create single-page applications with navigation.
+
+Lifecycle Methods:
+Familiarize yourself with React component lifecycle methods. While React Hooks have largely replaced lifecycle methods, it's still valuable to understand their concepts.
+
+Hooks:
+Dive into React Hooks, which allow you to use state and other React features in functional components. Learn about useState, useEffect, useContext, and other hooks.
+
+Context API:
+Explore the React Context API for managing state that needs to be accessible by multiple components without prop drilling.
+
+State Management (Redux or Recoil):
+Learn about state management solutions like Redux or Recoil for managing global state in larger applications.
+
+React Testing Library:
+Understand the basics of testing React components using tools like React Testing Library. Learn how to write unit tests and integration tests for your components.
+
+Styling in React:
+Explore different approaches to styling React components, including inline styles, CSS modules, and third-party libraries like styled-components.
+
+React Best Practices:
+Familiarize yourself with React best practices and patterns. This includes structuring your components, naming conventions, and code organization.
+
+GraphQL and Apollo Client (Optional):
+Learn about GraphQL and how to use Apollo Client for fetching data in React applications.
+
+Server-Side Rendering (SSR) and Next.js (Optional):
+Explore server-side rendering with frameworks like Next.js. This is beneficial for improving performance and SEO in React applications.
+
+Deployment and Hosting:
+Learn how to deploy and host your React applications on platforms like Netlify, Vercel, or AWS.
+
+
+
+npx create-react-app TestApp   => creating react app
+npm start
+
+
+18.1.24
+=======
+need to learn about number (binary, octal, hexadecimal)
+• 0
+ • ""
+ • null
+ • undefined
+ • NaN
+when we change this 5 types to make boolean (false)
+========
+
+
+Reinstall and create React app 
+explain about react folder and files
+npm install packagename or npm uninstall packageName
+npm test command for testing 
+
+index.js vs index.css
+
+Explain about components (called component tree structure)
+functional component and class componenet
+Explain about JSX Rules, export default and import
+using bootstrap in react
+Pratic basic block component with React   
+Repo Link =>  https://github.com/YeZawHtet-GIC/react-component-train.git
+Pratic Basic UI design with React (on projress)
+
+
+Tips
+****
+const items= ['ok', 'ck'];
+{items ? <p> Item not found</p> : null}    // true ? will <p>  // false : null
+{items && <p> Item not found </p>}         // true ? <p>       // false ? nothing
