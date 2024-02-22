@@ -264,3 +264,7 @@ Tips
 const items= ['ok', 'ck'];
 {items ? <p> Item not found</p> : null}    // true ? will <p>  // false : null
 {items && <p> Item not found </p>}         // true ? <p>       // false ? nothing
+
+
+useState   => use for changing specific componets state
+useEffect   => use for control rendering and calling api data
