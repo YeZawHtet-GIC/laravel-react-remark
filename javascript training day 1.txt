@@ -295,6 +295,8 @@ typescript basic
 ===========
 compiling typescript file to javascript file
 tsc filename.ts
+
+//making tsconfig.json using command
 tsc --init
 
 // compile js file to updated ts file
@@ -303,5 +305,9 @@ tsc
 //view console values using command
 node filename.js
 
-
+///typescript basic extra type style
+let name:string="mg mg";
+function add (x:number, y:number): number {
+return x + y;
+}
 
