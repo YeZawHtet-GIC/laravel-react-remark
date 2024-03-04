@@ -268,3 +268,40 @@ const items= ['ok', 'ck'];
 
 useState   => use for changing specific componets state
 useEffect   => use for control rendering and calling api data
+
+Using Json Server
+=================
+create folder called data and create file like db.json and write json format data
+- run command => npx json-server --watch data/db.json --port 8000
+
+Json endpoints
+==============
+/blogs    -        get             -  fetched all data
+/blogs/{id}   - get           -     fetch single data
+/blogs        - post       -   add new blog
+/blogs/{id}      -   delete  - delete blog
+
+
+//useful marque tag
+<marquee behavior="scroll" direction="left" scrollamount="5"></marquee>
+
+
+movie api key
+
+8a03f06c
+
+
+typescript basic
+===========
+compiling typescript file to javascript file
+tsc filename.ts
+tsc --init
+
+// compile js file to updated ts file
+tsc
+
+//view console values using command
+node filename.js
+
+
+
