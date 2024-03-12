@@ -305,9 +305,20 @@ tsc
 //view console values using command
 node filename.js
 
+//view console values using command auto 
+node --watch filename.js
+
 ///typescript basic extra type style
 let name:string="mg mg";
 function add (x:number, y:number): number {
 return x + y;
 }
 
+//we can change the rootDir and outDir in typescript js
+uncommand rootDir and outDir change what u want 
+
+//auto compiling ts file data to js file
+tsc --watch
+
+//tagged interface
+using type for tagged interface
