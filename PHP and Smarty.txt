@@ -1,0 +1,28 @@
+smarty have 3 directories within www
+.\templates\    => for store template files
+.\templates_c\  => for cache system for compiled templates
+.\configes\  => for template configuration files
+
+=================
+Smarty Syntax
+**************
+{*Comment*}
+{$variable}, {$obj.attribute}
+{$array[0]}
+{include file=<filename.tpl>}
+{if $true} do this {else} do that {/if}
+{literal}<something to be displayed as-is> {/literal}
+
+===================
+Smarty Variables
+******************
+single values or arrays
+temporary variables within smarty
+{assign var="username" value="Sarah Conner"}
+
+Smarty access POST, COOKIE , SESSION
+**********************************
+$smarty.cookies.<value name>
+$smart.request.<value name>
+$smarty.post.<value name>
+$smarty.session.<value name>
