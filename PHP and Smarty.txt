@@ -1,7 +1,7 @@
 smarty have 3 directories within www
 .\templates\    => for store template files
 .\templates_c\  => for cache system for compiled templates
-.\configes\  => for template configuration files
+.\configs\  => for template configuration files
 
 =================
 Smarty Syntax
@@ -26,3 +26,15 @@ $smarty.cookies.<value name>
 $smart.request.<value name>
 $smarty.post.<value name>
 $smarty.session.<value name>
+
+===============
+smarty installation
+- smarty.net 
+- 
+
+PHP Remarks
+**************
+connecting to database in PHP
+$connn  =  mysqli_connect(host, username, password, database name);
+if(!$conn) {
+echo "Connection Error to database " .  mysqli_connect_error();
