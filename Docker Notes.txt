@@ -1,0 +1,45 @@
+management 
+-curriculum create
+-assignment
+-checking Is pratice or not
+
+student
+-
+
+languages
+-pure php (7.2)
+-c++
+-mysql 5.7 (to update v-8)
+- linux
+-nginx
+-smarty
+-docker
+
+
+cleaning 
+prefetch
+
+
+Docker Remark
+-container => Containers have everything that your code needs in order to run, down to a base operating system
+=> isolated enviroment for your code.
+=> always need an image to run a container
+
+- docker build -t welcome-to-docker .
+- docker compose up -d  (-d flag tells Docker Compose to run in detached mode.)
+- docker compose watch ( for sure to automatically update and preview our code )
+=================
+-adding volume to persist data after deleting containers
+
+  todo-database:
+ 
+    volumes: 
+     - database:/data/db
+
+volumes:
+  database:
+===============================
+Accessing a local folder in docker container
+*************
+- can use bind mounts to access local folder
+-Add a bind mount to access data on your system from a container. A bind mount lets you share a directory from your host's filesystem into the container.
