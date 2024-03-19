@@ -19,15 +19,21 @@ languages
 cleaning 
 prefetch
 
-
+*******************
 Docker Remark
+*******************
+Adding docker to project 
+*************
+- docker init  ( this command will create Docker assets )
+================
 -container => Containers have everything that your code needs in order to run, down to a base operating system
 => isolated enviroment for your code.
 => always need an image to run a container
 
-- docker build -t welcome-to-docker .
-- docker compose up -d  (-d flag tells Docker Compose to run in detached mode.)
-- docker compose watch ( for sure to automatically update and preview our code )
+- docker build -t welcome-to-docker . 		( creating image )
+-  docker compose up  	(running multi-container docker)
+- docker compose up -d  	(-d flag tells Docker Compose to run in detached mode.)
+- docker compose watch 	( for sure to automatically update and preview our code )
 =================
 -adding volume to persist data after deleting containers
 
@@ -43,3 +49,40 @@ Accessing a local folder in docker container
 *************
 - can use bind mounts to access local folder
 -Add a bind mount to access data on your system from a container. A bind mount lets you share a directory from your host's filesystem into the container.
+volumes: 
+     - ./app:/usr/src/app
+     - /usr/src/app/node_modules
+======================
+Docker Commands
+*************************
+- Image Create => docker build -t ImageName .
+- Running Container => docker run -dp 127.0.0.1:3000:3000 getting-started
+- View running Container List => docker ps
+- View all container list => docker ps --all
+- Stop the running Container => docker stop <container_id)
+- Removing container => docker rm <container_id)
+- Single command for stop and remove container => docker rm -f <container_id>
+- Push the Image => docker push docker/getting-started
+- Checking Image List => docker image ls
+- Login to Docker Hub => docker login -u User_Name
+- Volume Create => docker volume create todo-db
+- Attaching or mounting volume db => docker run -dp 127.0.0.1:3000:3000 --mount type=volume,src=todo-db,target=/etc/todos getting-started
+* Named volume: type=volume,src=my-volume,target=/usr/local/data
+* Bind mount: type=bind,src=/path/to/data,target=/usr/local/data
+
+
+Morning greeting
+おはようございます。
+ 
+Afternoon greeting　
+こんにちは。
+お疲れさまです。
+ 
+when you start joining the meeting,　 お疲れさまです。
+when the meeting finished, 　お疲れさまでした。失礼いたしました。
+ 
+Before going back home, 　おさきに失礼します。
+Response for the above greeting , 　お疲れさまでした。
+ 
+よろしくお願いします。
+
