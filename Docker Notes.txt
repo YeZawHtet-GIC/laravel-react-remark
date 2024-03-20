@@ -55,34 +55,52 @@ volumes:
 ======================
 Docker Commands
 *************************
-- Image Create => docker build -t ImageName .
-- Running Container => docker run -dp 127.0.0.1:3000:3000 getting-started
-- View running Container List => docker ps
-- View all container list => docker ps --all
-- Stop the running Container => docker stop <container_id)
-- Removing container => docker rm <container_id)
-- Single command for stop and remove container => docker rm -f <container_id>
-- Push the Image => docker push docker/getting-started
-- Checking Image List => docker image ls
-- Login to Docker Hub => docker login -u User_Name
-- Volume Create => docker volume create todo-db
-- Attaching or mounting volume db => docker run -dp 127.0.0.1:3000:3000 --mount type=volume,src=todo-db,target=/etc/todos getting-started
+- docker file create with instructions => 	docker init
+- docker file munual create => 	touch dockerfile
+- Image Create => 		docker build -t ImageName .
+- Running Container => 	docker run -dp 127.0.0.1:3000:3000 getting-started
+- View running Container List => 	docker ps
+- View all container list => 		docker ps --all
+- Stop the running Container => 	docker stop <container_id)
+- Removing container => 		docker rm <container_id)
+- Single command for stop and remove container => 		docker rm -f <container_id>
+- Push the Image => 		docker push docker/getting-started
+- tag Image for pushing to docker hub => 	docker tag getting-started username/getting-started
+- Checking Image List => 		docker image ls
+- Login to Docker Hub => 		docker login -u User_Name
+- Volume Create => 		docker volume create todo-db
+- Attaching or mounting volume db => 		docker run -dp 127.0.0.1:3000:3000 --mount type=volume,src=todo-db,target=/etc/todos getting-started
 * Named volume: type=volume,src=my-volume,target=/usr/local/data
 * Bind mount: type=bind,src=/path/to/data,target=/usr/local/data
+- Create Network =>  		docker network create todo-app
+- start MySQL container and attached to network  =>		docker run -d \
+  							  --network todo-app --network-alias mysql \
+   							 -v todo-mysql-data:/var/lib/mysql \
+   							 -e MYSQL_ROOT_PASSWORD=secret \
+  							  -e MYSQL_DATABASE=todos \
+ 							   mysql:8.0 
+- confirming database up and running => 		docker exec -it <mysql-container-id> mysql -u root -p
+
+================
+Defining App Service
+-docker run -dp 127.0.0.1:3000:3000 \
+  -w /app -v "$(pwd):/app" \
+  --network todo-app \
+  -e MYSQL_HOST=mysql \
+  -e MYSQL_USER=root \
+  -e MYSQL_PASSWORD=secret \
+  -e MYSQL_DB=todos \
+  node:18-alpine \
+  sh -c "yarn install && yarn run dev"
+=====
+Defining MySQL service   
+-  docker run -d \
+  --network todo-app --network-alias mysql \
+  -v todo-mysql-data:/var/lib/mysql \
+  -e MYSQL_ROOT_PASSWORD=secret \
+  -e MYSQL_DATABASE=todos \
+  mysql:8.0
 
 
-Morning greeting
-おはようございます。
- 
-Afternoon greeting　
-こんにちは。
-お疲れさまです。
- 
-when you start joining the meeting,　 お疲れさまです。
-when the meeting finished, 　お疲れさまでした。失礼いたしました。
- 
-Before going back home, 　おさきに失礼します。
-Response for the above greeting , 　お疲れさまでした。
- 
-よろしくお願いします。
+
 
