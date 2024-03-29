@@ -1,0 +1,25 @@
+Amazon web service
+&&&&&&&&&&&&
+3 types of services
+===============
+IaaS => infrastrature as a service
+SaaS => software as a service
+PaaS => platform as a service
+
+Cloud Deployment Model
+=================
+-private cloud
+-public cloud
+-hybrid cloud
+
+Instance => running service on the EC2 
+EC2 => Amazon Elastic Compute Cloud => web service from Amazon => provides resizable compute services in the cloud
+
+Types of Instance
+============
+General Purpose Instance  => quick and cost more ( like email response services)
+Compute Instances => lot of processing power (like streaming web)
+Memory Instances => lot of memory
+Storage Instances => big data applications
+GPU Instances => 3D modelling
+
