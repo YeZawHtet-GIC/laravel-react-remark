@@ -1,0 +1,44 @@
+Register
+=====
+- Name, Email, Id, Ps, CPs
+
+Login
+====
+- Email or ID, Ps
+
+Home
+====
+- customers, projects, employees, current project, engineer status report ,
+   monthly income, income according to income
+
+Departments
+=========
+- view, insert, update, delete ( Departments)
+- insert => department name, leader name, marking name
+
+Roles
+-------
+- insert, update, delete 
+- insert => role name
+
+Customers
+=======
+- none
+
+Engineers
+====
+-none
+
+Projects
+====
+- insert, update, delete
+- insert => year, customer name, project type, project name, department, marketing,
+contract status, contact number, contract start date, contract end date, payment status
+
+Assigns
+===
+- 
+Assign Info
+Cost 
+Cost Summary
+Activity Log
